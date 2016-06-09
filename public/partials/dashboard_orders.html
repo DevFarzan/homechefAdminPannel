@@ -15,7 +15,7 @@
             <a href="#" ng-click="Confirmed('Confirmed');">Confirmed ({{ 0 }})</a>
             <a href="#" ng-click="Canceled('Canceled');">Canceled ({{tempArrayValueCanceled.length || 0 }})</a>
 
-            <div class="form-group">
+           <!-- <div class="form-group">
                 <label style="font-size: 19px;
     margin-top: 15px;
     margin-left: 5px;">Search By Date:</label>
@@ -42,9 +42,21 @@
     margin-bottom: -17px;
     margin-left: 84%;
     margin-top: -7%;">
+            </div>-->
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <label class="col-md-2 col-sm-2 col-xs-2" style="padding-left: 97px;
+    font-size: 15px;">Search By Date:</label>
+                <input type="date" class="col-md-2" ng-model="datepicker" style="margin-top: -8px;
+    margin-bottom: 2px;
+    border: 1px solid rgba(128, 128, 128, 0.37);height:5%">
+                <button class="col-md-1 col-sm-1 col-xs-1 button button-sm" ng-click="datePicker(datepicker)" style="margin-top:-8px;margin-bottom: 2px;margin-left:12px">Search</button>
+                <label class="col-md-2" style="font-size:14px;margin-left:45px;">Search By Dish Name Or Foodie:</label>
+              <input type="text" class="col-md-2 col-sm-2 col-xs-2" ng-model="searchQuery"  value="{{searchQuery | date:'MMM dd yyyy' }}" style="border: 1px solid rgba(128, 128, 128, 0.37);
+    height: 5%;
+    margin-bottom: 6px;
+    margin-top: -5px;" placeholder="search dishname or foodie name">
             </div>
-
-
 
 
             <div class="col-md-12">
@@ -66,14 +78,14 @@
                         <tr class="country-table-head">
                             <!-- <th><input type="checkbox"></th> -->
                             <th class="sort-down">Order No</th>
-                            <th class="date-sort" data-date-format="d m Y">Dates<span>&#9660;</span></th>
-                            <th class="sort-down">Order<span>&#9660;</span></th>
-                            <th class="sort-down">Dishes Ordered<span>&#9660;</span></th>
-                            <th class="sort-down">Status<span>&#9660;</span></th>
-                            <th class="sort-down">Pick-up Time<span>&#9660;</span></th>
-                            <th class="sort-down">Delivery Time<span>&#9660;</span></th>
-                            <th class="sort-down">Total<span>&nbsp;</span></th>
-                            <th class="sort-down">Payment Status<span>&nbsp;</span></th>
+                            <th class="date-sort" data-date-format="d m Y">Order Dates</th>
+                            <th class="sort-down">Ordered By</th>
+                            <th class="sort-down">Dishes Ordered</th>
+                            <th class="sort-down">Status</th>
+                            <th class="sort-down">Pick-up Time</th>
+                            <th class="sort-down">Delivery Time</th>
+                            <th class="sort-down">Total</th>
+                            <th class="sort-down">Payment Status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -84,9 +96,9 @@
                                 <span>#</span><span>{{order.orderno}}</span>
                             </td>
                             <td>
-                                <span><b>Ordered On</b></span><br/>
+                                <span><b></b></span><br/>
                                 {{ formatDate(order.orderedon) | date:'EEE, MMM dd yyyy h:mm a'}}<br />
-                                <span>Completed On:</span><br />
+
                                 {{order.completedon || ""}}
                             </td>
                             <td>
@@ -123,12 +135,25 @@
                             </td>
                             <td>
                                 <a href="#" ng-click="changeOrderStatus(order)">
-                                    Change Status
+                                    View
                                 </a>
                             </td>
 
                         </tr>
+
                     </table>
+                    <!--<pagination
+                            ng-model="currentPage"
+                            total-items="allOrdersArray.length"
+                            max-size="maxSize"
+                            boundary-links="true">
+                    </pagination>-->
+                    <!--<dir-pagination-controls
+                            max-size="15"
+                            direction-links="true"
+                            boundary-links="true" >
+                    </dir-pagination-controls>-->
+
                 </div>
             </div>
         </div>

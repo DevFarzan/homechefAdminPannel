@@ -465,6 +465,14 @@ appControllers.controller('adminControler', ['$scope','$state', '$rootScope', '$
  'ListDishService','auth',
  function($scope, $state, $rootScope, $stateParams , UserService, $http, ListDishService, auth){
 
+     $scope.filteredTodos = []
+         ,$scope.currentPage = 1
+         ,$scope.numPerPage = 10
+         ,$scope.maxSize = 5;
+
+
+
+
      $scope.ID = '';
      $scope.password = '';
      $scope.loginFunction = function(){
@@ -499,6 +507,12 @@ else {
 
         });
     };
+
+
+
+
+
+
 
     $scope.unpaid = function(unpaid){
         $scope.searchQuery = unpaid;
@@ -639,10 +653,21 @@ else {
             console.log(results);
             //$scope.TempArray = results.data
             $scope.allOrdersArray = results.data;
+            /*$scope.makeTodos();*/
         });
     }
+    /*$scope.makeTodos = function() {
+        $scope.todos = [];
+        for (i=1;i<$scope.allOrdersArray.length;i++) {
+            $scope.todos.push({ text:'todo '+i, done:false});
+        }
+    };*/
+    $scope.$watch('currentPage + numPerPage', function() {
+        var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+            , end = begin + $scope.numPerPage;
 
-
+        $scope.filteredTodos = $scope.todos.slice(begin, end);
+    });
     $scope.showOrdersListings = function () {
         if ($scope.isUserChef) {
             $state.go('dashboard.chefallorders');
