@@ -469,7 +469,7 @@ appControllers.controller('adminControler', ['$scope','$state', '$rootScope', '$
      $scope.password = '';
      $scope.loginFunction = function(){
         console.log( $scope.ID +""+ $scope.password) ;
-         if($scope.ID == 'Admin' && $scope.password == 'Admin'){
+         if($scope.ID == 'hcadmin' && $scope.password == 'H0m3Ch3fp@sS'){
              $state.go('dashboard');
              localStorage.setItem('admin',$scope.ID);
          }
@@ -499,6 +499,50 @@ else {
 
         });
     };
+
+    $scope.unpaid = function(unpaid){
+        $scope.searchQuery = unpaid;
+    }
+    $scope.Confirmed = function(Confirmed){
+        $scope.searchQuery = Confirmed;
+    }
+    $scope.Canceled = function(Canceled){
+        $scope.searchQuery = Canceled;
+    }
+    $scope.All = function(All){
+        $scope.searchQuery = '';
+    }
+    //$scope.dateVairaible = [];
+    $scope.datePicker = function(Date){
+        $scope.searchQuery = Date.toDateString();
+        //console.log($scope.dateVairaible)
+    }
+
+
+
+    $scope.tempArrayValueCanceled = [];
+    $scope.tempArrayUnpaid = [];
+
+    ListDishService.getAllOrders().then(function (results) {
+        console.log(results);
+        //$scope.TempArray = results.data
+        for(var i=0;i<results.data.length;i++){
+            if(results.data[i].action == "Unpaid"){
+                $scope.tempArrayUnpaid.push(results.data[i]);
+            }
+        }
+        //$scope.allOrdersArray.sort();
+    });
+    ListDishService.getAllOrders().then(function (results) {
+        console.log(results);
+        //$scope.TempArray = results.data
+        for(var i=0;i<results.data.length;i++){
+            if(results.data[i].status == "Canceled"){
+                $scope.tempArrayValueCanceled.push(results.data[i]);
+            }
+        }
+        //$scope.allOrdersArray.sort();
+    });
     //$scope.searchQuery = '';
 
 
@@ -595,7 +639,6 @@ else {
             console.log(results);
             //$scope.TempArray = results.data
             $scope.allOrdersArray = results.data;
-            //$scope.allOrdersArray.sort();
         });
     }
 
