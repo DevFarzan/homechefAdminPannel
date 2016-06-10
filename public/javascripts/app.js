@@ -2,7 +2,7 @@
 
 /* App Module */
 
-var myApp =  angular.module('myApp',['ui.router', 'appControllers','appDirectives','appServices']);
+var myApp =  angular.module('myApp',['ui.router', 'appControllers','appDirectives','appServices','angularUtils.directives.dirPagination']);
 
 myApp.config([
 	'$stateProvider',

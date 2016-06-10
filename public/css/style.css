@@ -7201,7 +7201,7 @@ tr {
 }
 
 .top_sort_shortcuts a:first-child{
-	padding-left:0;
+	padding-left:15px;
 }
 
 /* Log in */
@@ -7355,4 +7355,13 @@ tr {
     background: url("../images/gray-gradient.jpg") repeat scroll 0 0 / 100% 100% rgba(0, 0, 0, 0);
     border-bottom: 1px solid #FFFFFF;
     float: left;
+}
+.sort-icon {
+    font-size: 9px;
+    margin-left: 5px;
+    padding-left: 10px !important;
+}
+
+th {
+    cursor:pointer;
 }

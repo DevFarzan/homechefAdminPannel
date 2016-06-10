@@ -662,12 +662,30 @@ else {
             $scope.todos.push({ text:'todo '+i, done:false});
         }
     };*/
-    $scope.$watch('currentPage + numPerPage', function() {
+    /*$scope.$watch('currentPage + numPerPage', function() {
         var begin = (($scope.currentPage - 1) * $scope.numPerPage)
             , end = begin + $scope.numPerPage;
 
         $scope.filteredTodos = $scope.todos.slice(begin, end);
-    });
+    });*/
+    /*$scope.pagination = function(){
+        $scope.todos = [];
+        for(var i=1;i<$scope.allOrdersArray.length;i++){
+            $scope.todos.push({
+                text:'todo +i',
+                done:false
+            })
+        }
+    }*/
+    $scope.scrollFunction = function() {
+        $('body,html').animate({
+            scrollTop: 0
+        }, 600);
+    }
+
+    $scope.pageChanged = function() {
+        window.location.hash = '#top';
+    };
     $scope.showOrdersListings = function () {
         if ($scope.isUserChef) {
             $state.go('dashboard.chefallorders');
