@@ -508,7 +508,16 @@ else {
         });
     };
 
+    UserService.getAllCustomers().then(function (results) {
+        if (results.data) {
+            console.log("All Users:: ", results.data);
+            $scope.customersArray = results.data;
 
+        } else {
+            
+        }
+
+    });
 
 
 
@@ -645,7 +654,12 @@ else {
             console.log(results);
         });
     };
-
+    ListDishService.getAllOrders().then(function (results) {
+        console.log(results);
+        //$scope.TempArray = results.data
+        $scope.allOrdersArray = results.data;
+        /*$scope.makeTodos();*/
+    });
     $scope.showAllOrders = function () {
         $state.go('dashboard.allorders');
         console.log("Calling service - showAllOrders:: ");
