@@ -82,6 +82,8 @@
                             <th class="date-sort" data-date-format="d m Y">Order Dates</th>
                             <th class="sort-down">Ordered By</th>
                             <th class="sort-down">Dishes Ordered</th>
+                            <th class="sort-down">Dish Type</th>
+                            <th class="sort-down">Dish Cuisine</th>
                             <th class="sort-down">Status</th>
                             <th class="sort-down">Pick-up Time</th>
                             <th class="sort-down">Delivery Time</th>
@@ -91,7 +93,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr dir-paginate="order in allOrdersArray | orderBy:'-orderno'  | filter:searchQuery|itemsPerPage:15 ">
+                        <tr dir-paginate="order in allOrdersArray | orderBy:'-orderno'  | filter:searchQuery|itemsPerPage:25 ">
 
                             <td>
                                 <span>#</span><span>{{order.orderno}}</span>
@@ -114,6 +116,17 @@
                                     by {{dish.chefname || ""}}
                                 </div>
                             </td>
+                            <td>
+                                <div ng-repeat="dishType in order.dishes track by $index">
+                                    {{dishType.type}}
+                                </div>
+                            </td>
+                            <td>
+                                <div ng-repeat="dishCuisine in order.dishes track by $index">
+                                    {{dishCuisine.cuisine}}
+                                </div>
+                            </td>
+
                             <td>
                                 {{order.status}}
                             </td>
@@ -139,7 +152,6 @@
                                     View
                                 </a>
                             </td>
-
                         </tr>
 
                     </table>
@@ -151,7 +163,7 @@
                     </pagination>-->
                    <div ng-click="scrollFunction()">
                     <dir-pagination-controls
-                            max-size="15"
+                            max-size="25"
                             direction-links="true" boundary-links="true"  previous-text="&laquo;" next-text="&raquo;">
                     </dir-pagination-controls>
                    </div>
@@ -161,4 +173,11 @@
             </div>
         </div>
     </div> <!-- end inner row -->
-</div> <!-- end div -->   
+</div> <!-- end div -->
+
+
+
+
+
+
+

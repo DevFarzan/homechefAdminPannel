@@ -1549,4 +1549,5 @@ appControllers.controller('listDishControler', ['$scope','$state', '$rootScope',
 appControllers.controller('footerControler', ['$scope','auth', function($scope, auth){
   $scope.appVersion = "1.0";
   
-}]);  
+}]);
+
