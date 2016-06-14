@@ -23,7 +23,6 @@ myApp.config([
               }
           })
 
-
 		.state('dashboard', {
 		  url: '/dashboard',
 		   views: {

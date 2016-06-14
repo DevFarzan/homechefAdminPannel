@@ -470,8 +470,13 @@ appControllers.controller('adminControler', ['$scope','$state', '$rootScope', '$
          ,$scope.numPerPage = 10
          ,$scope.maxSize = 5;
 
+//$scope.textboxHide = true;
+$scope.type = function(typeP){
 
+    $scope.search = typeP;
+    //$scope.textboxHide = false;
 
+}
 
      $scope.ID = '';
      $scope.password = '';
@@ -524,20 +529,22 @@ else {
 
 
     $scope.unpaid = function(unpaid){
-        $scope.searchQuery = unpaid;
+        $scope.search = unpaid;
     }
     $scope.Confirmed = function(Confirmed){
-        $scope.searchQuery = Confirmed;
+        $scope.search = Confirmed;
     }
     $scope.Canceled = function(Canceled){
-        $scope.searchQuery = Canceled;
+        $scope.search = Canceled;
     }
     $scope.All = function(All){
-        $scope.searchQuery = '';
+        $scope.search = '';
+        //$scope.textboxHide = true;
     }
     //$scope.dateVairaible = [];
     $scope.datePicker = function(Date){
-        $scope.searchQuery = Date.toDateString();
+        $scope.search = Date.toDateString();
+        //$scope.textboxHide = false;
         //console.log($scope.dateVairaible)
     }
 

@@ -56,11 +56,12 @@
               <input type="text" class="col-md-2 col-sm-2 col-xs-2" ng-model="searchQuery"  value="{{searchQuery | date:'MMM dd yyyy' }}" style="border: 1px solid rgba(128, 128, 128, 0.37);
     height: 5%;
     margin-bottom: 6px;
-    margin-top: -5px;" placeholder="search dishname or foodie name">
+    margin-top: -5px;" placeholder="search dishname or foodie name" >
             </div>
+            <input type="text" ng-model="search" style="display:none;">
 
 
-            <div class="col-md-12">
+            <div class="" style="margin-left:-234px;">
                 <div class="widget-body">
                     <div class="widget-heading purple">
                         <i class="icon-table pull-left"></i><h3 class="pull-left">Order Log</h3>
@@ -82,8 +83,45 @@
                             <th class="date-sort" data-date-format="d m Y">Order Dates</th>
                             <th class="sort-down">Ordered By</th>
                             <th class="sort-down">Dishes Ordered</th>
-                            <th class="sort-down">Dish Type</th>
-                            <th class="sort-down">Dish Cuisine</th>
+                            <th class="sort-down" style="width:8%;">Dish Type
+                            <select ng-click="type(search);" ng-model="search">
+                                <option value="">All</option>
+                                <option>Main Dish</option>
+                                <option>Snack</option>
+                                <option>Desserts</option>
+                                <option>Others</option>
+                            </select>
+                            </th>
+                            <th class="sort-down" style="width:8%;">Dish Cuisine
+                                <select ng-click="type(search);" ng-model="search">
+                                    <option value="">All</option>
+
+                                    <option value="American">American</option>
+                                    <option value="Asian Fusion">Asian Fusion</option>
+                                    <option value="BBQ">BBQ</option>
+                                    <option value="British">British</option>
+                                    <option value="Caribbean">Caribbean</option>
+                                    <option value="Chinese">Chinese</option>
+                                    <option value="Continental">Continental</option>
+                                    <option value="East European">East European</option>
+                                    <option value="European">European</option>
+                                    <option value="French">French</option>
+                                    <option value="Indian">Indian</option>
+                                    <option value="Italian">Italian</option>
+                                    <option value="Japanese">Japanese</option>
+                                    <option value="Lebanese">Lebanese</option>
+                                    <option value="Mexican">Mexican</option>
+                                    <option value="Moroccan">Moroccan</option>
+                                    <option value="Pakistani">Pakistani</option>
+                                    <option value="Portuguese">Portuguese</option>
+                                    <option value="Spanish">Spanish</option>
+                                    <option value="Srilankan">Srilankan</option>
+                                    <option value="Thai">Thai</option>
+                                    <option value="Turkish">Turkish</option>
+                                    <option value="Vietnamese">Vietnamese</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </th>
                             <th class="sort-down">Status</th>
                             <th class="sort-down">Pick-up Time</th>
                             <th class="sort-down">Delivery Time</th>
@@ -93,7 +131,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr dir-paginate="order in allOrdersArray | orderBy:'-orderno'  | filter:searchQuery|itemsPerPage:25 ">
+                        <tr dir-paginate="order in allOrdersArray | orderBy:'-orderno'  | filter:searchQuery | filter:search|itemsPerPage:25 ">
 
                             <td>
                                 <span>#</span><span>{{order.orderno}}</span>
@@ -117,7 +155,7 @@
                                 </div>
                             </td>
                             <td>
-                                <div ng-repeat="dishType in order.dishes track by $index">
+                                <div ng-repeat="dishType in order.dishes track by $index" >
                                     {{dishType.type}}
                                 </div>
                             </td>
