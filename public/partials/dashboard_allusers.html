@@ -1,62 +1,69 @@
- 
+
 
 <div class="container">
-  <h2 class="page-heading"> <span class="page-heading-title2">List of all Chefs & Foodies</span></h2>  <i class="fa fa-spinner fa-pulse fa-3x" ng-hide="customersArray || customersArray.length"></i>
-  
-<div class="row">  
-  <div class="form-inline">       
-        <input type="text" size="50" class="form-control" ng-model="query" placeholder="Search customers by name, phone, email or status ... " />      
+    <h2 class="page-heading"> <span class="page-heading-title2">List of all Chefs & Foodies</span></h2>  <i class="fa fa-spinner fa-pulse fa-3x" ng-hide="customersArray || customersArray.length"></i>
+
+    <div class="row">
+        <div class="form-inline">
+            <input type="text" size="50" class="form-control" ng-model="query" placeholder="Search customers by name, phone, email or status ... " />
          
         <span>
           Total Registered Users:  {{customersArray.length}} 
         </span>
 
-    <table class=" table-bordered table-hover table-condensed">
-      <thead >
-        <tr >
-          <th>User Type</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Mobile</th>
-          <th>Endorsed</th>
-          <th>Featured Chef</th>
-          <th>Verified Chef</th>
-          <th>View Profile</th>
-          <th>View Dishes</th>
-        </tr>
-      </thead>
-      <tbody> 
-      <tr ng-repeat="customer in customersArray | filter: query">              
-        <td class="text-center">
-          {{customer.usertype || "Chef"}} 
-        </td>
-        <td class="text-center">
-          {{customer.regisId.username}} 
-        </td>
-        <td class="text-center">
-          {{customer.regisId.email}} 
-        </td>
-        <td class="text-center">
-          {{customer.regisId.mobile}} 
-        </td>
-        <td class="text-center">
-          {{customer.endorsed ? "Yes" : "No"}}          
-        </td>
-        <td class="text-center">
-          {{customer.featuredchef ? "Yes" : "No"}}            
-        </td>
-        <td class="text-center">
-           {{customer.verifiedchef ? "Yes" : "No" }}            
-        </td>
-        <td class="text-center">
-          <a ng-href="" ng-click="showChefProfile(customer.regisId._id)">Profile</a>         
-        </td>   
-        <td class="text-center">
-          <a ng-href="" ng-click="showChefDishes(customer.regisId._id)" ng-hide="customer.usertype=='foodie' ">Dishes</a>          
-        </td>            
-      </tr> 
-      </tbody>
-    </table> 
- </div>
- </div>
+            <table class=" table-bordered table-hover table-condensed" style="margin-top: 14px;">
+                <thead >
+                <tr >
+                    <th>User Type</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Registration Date</th>
+                    <th>Endorsed</th>
+                    <th>Featured Chef</th>
+                    <th>Verified Chef</th>
+                    <th>View Profile</th>
+                    <th>View Dishes</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="customer in customersArray.slice().reverse() | filter: query">
+                    <td class="text-center">
+                        {{customer.usertype || "Chef"}}
+                    </td>
+                    <td class="text-center">
+                        {{customer.regisId.username}}
+                    </td>
+                    <td class="text-center">
+                        {{customer.regisId.email}}
+                    </td>
+                    <td class="text-center">
+                        {{customer.regisId.mobile}}
+                    </td>
+
+                    <td class="text-center">
+                        <div ng-repeat="date in customer.regisId.InsertedDate">
+                            {{date}}
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        {{customer.endorsed ? "Yes" : "No"}}
+                    </td>
+                    <td class="text-center">
+                        {{customer.featuredchef ? "Yes" : "No"}}
+                    </td>
+                    <td class="text-center">
+                        {{customer.verifiedchef ? "Yes" : "No" }}
+                    </td>
+                    <td class="text-center">
+                        <a ng-href="" ng-click="showChefProfile(customer.regisId._id)">Profile</a>
+                    </td>
+                    <td class="text-center">
+                        <a ng-href="" ng-click="showChefDishes(customer.regisId._id)" ng-hide="customer.usertype=='foodie' ">Dishes</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

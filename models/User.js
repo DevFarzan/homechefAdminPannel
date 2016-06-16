@@ -6,7 +6,8 @@ var config = require('../config/config');
 var UserSchema = new mongoose.Schema({
   username: {type: String },
   mobile:   {type: String },
-  email:    {type: String },   
+  email:    {type: String },
+  InsertedDate:Array,
   subscribe: {type: Boolean ,  default: false },
   status:   {type: Boolean ,  default: false },
   hash: String,

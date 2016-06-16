@@ -39,12 +39,21 @@ myApp.config([
 		.state('dashboard.allorders', {
 		   url: '/allorders',
 		   views: {
-		   		'dashboard-contents@dashboard': { 
+		   		'dashboard-contents@dashboard': {
 		  		templateUrl: '/partials/dashboard_orders.html',
 		  		controller: 'adminControler' 
 		  	}
 		   }		   		    
 		})
+          .state('dashboard.order',{
+              url:'/orderLog',
+              views: {
+                  'dashboard-contents@dashboard': {
+                      templateUrl: '/partials/dashboard_orders.html',
+                      controller: 'adminControler'
+                  }
+              }
+          })
           .state('dashboard.login', {
               url: '/allorders',
               views: {

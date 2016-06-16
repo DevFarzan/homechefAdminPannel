@@ -1,0 +1,221 @@
+<!-- Content page -->
+<!--<div class="" xmlns="http://www.w3.org/1999/html">-->
+<h2 class="page-heading"> <span class="page-heading-title2">Order Log</span></h2>
+
+<div class="row" ng-hide="allOrdersArray.length > 0 ">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+        <i class="fa fa-spinner fa-pulse fa-3x"></i>
+    </div>
+</div>
+<span id="top"></span>
+
+<div class="row" ng-show="allOrdersArray.length > 0 ">
+    <div class="col-lg-12 top_sort_shortcuts">
+        <a href="" ng-click="All();">All ({{allOrdersArray.length || 0 }})</a>
+        <a href="#" ng-click="unpaid('Unpaid');">Unpaid ({{tempArrayUnpaid.length || 0 }})</a>
+        <a href="#" ng-click="Confirmed('Confirmed');">Confirmed ({{ 0 }})</a>
+        <a href="#" ng-click="Canceled('Canceled');">Canceled ({{tempArrayValueCanceled.length || 0 }})</a>
+
+        <!-- <div class="form-group">
+             <label style="font-size: 19px;
+ margin-top: 15px;
+ margin-left: 5px;">Search By Date:</label>
+             <input type="date" ng-model="datepicker" data-date-format="DD MMMM YYYY" style="width: 11%;
+ /* margin-right: -36%; */
+ /* margin-top: 45px; */
+ margin-bottom: -17px;
+ margin-left: 1%;
+ margin-top: 1%;
+ border:1px solid rgba(128, 128, 128, 0.46);">
+             <button class="button button-sm" ng-click="datePicker(datepicker)" style="    float: right;
+ margin-right: 39%;
+ margin-top: 16px;">search</button>
+
+         </div>
+
+         <div class="form-group" style="padding-right: 63px;">
+             <label style=" font-size: 16px;
+ margin-top: -78px;
+ margin-left: 65%;">Search By Dish Name Or Foodie:</label>
+             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="search name" ng-model="searchQuery"  value="{{searchQuery | date:'MMM dd yyyy' }}" style="width: 20%;
+ /* margin-right: -36%; */
+ /* margin-top: 45px; */
+ margin-bottom: -17px;
+ margin-left: 84%;
+ margin-top: -7%;">
+         </div>-->
+
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <label class="col-md-2 col-sm-2 col-xs-2" style="padding-left: 90px;
+    font-size: 15px;">Search By Date:</label>
+            <input type="date" class="col-md-2" ng-model="datepicker" style="margin-top: -8px;
+    margin-bottom: 2px;
+    border: 1px solid rgba(128, 128, 128, 0.37);height:5%">
+            <button class="col-md-1 col-sm-1 col-xs-1 button button-sm" ng-click="datePicker(datepicker)" style="margin-top:-8px;margin-bottom: 2px;margin-left:12px">Search</button>
+            <label class="col-md-2" style="font-size:14px;margin-left:45px;">Search By Dish Name Or Foodie:</label>
+            <input type="text" class="col-md-2 col-sm-2 col-xs-2" ng-model="searchQuery"  value="{{searchQuery | date:'MMM dd yyyy' }}" style="border: 1px solid rgba(128, 128, 128, 0.37);
+    height: 5%;
+    margin-bottom: 6px;
+    margin-top: -5px;" placeholder="search dishname or foodie name" >
+        </div>
+        <input type="text" ng-model="search" style="display:none;">
+
+
+        <div class="" style="margin-left:-234px;">
+            <div class="widget-body">
+                <div class="widget-heading purple">
+                    <i class="icon-table pull-left"></i><h3 class="pull-left">Order Log</h3>
+                    <ul>
+                        <li class="dropdown panel-function">
+                            <a href="#" data-toggle="dropdown" role="button" id="drop2"> <b class="caret"></b></a>
+                            <ul aria-labelledby="drop2" role="menu" class="dropdown-menu" id="menu2">
+                                <li role="presentation"><a class="hide-btn" title="">-</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <table id="country-list" class="sortable-table">
+                    <thead>
+                    <tr class="country-table-head">
+                        <!-- <th><input type="checkbox"></th> -->
+                        <th class="sort-down">Order No</th>
+                        <th class="date-sort" data-date-format="d m Y">Order Dates</th>
+                        <th class="sort-down">Ordered By</th>
+                        <th class="sort-down">Dishes Ordered</th>
+                        <th class="sort-down" style="width:8%;">Dish Type
+                            <select ng-click="type(search);" ng-model="search">
+                                <option value="">All</option>
+                                <option>Main Dish</option>
+                                <option>Snack</option>
+                                <option>Desserts</option>
+                                <option>Others</option>
+                            </select>
+                        </th>
+                        <th class="sort-down" style="width:8%;">Dish Cuisine
+                            <select ng-click="type(search);" ng-model="search">
+                                <option value="">All</option>
+
+                                <option value="American">American</option>
+                                <option value="Asian Fusion">Asian Fusion</option>
+                                <option value="BBQ">BBQ</option>
+                                <option value="British">British</option>
+                                <option value="Caribbean">Caribbean</option>
+                                <option value="Chinese">Chinese</option>
+                                <option value="Continental">Continental</option>
+                                <option value="East European">East European</option>
+                                <option value="European">European</option>
+                                <option value="French">French</option>
+                                <option value="Indian">Indian</option>
+                                <option value="Italian">Italian</option>
+                                <option value="Japanese">Japanese</option>
+                                <option value="Lebanese">Lebanese</option>
+                                <option value="Mexican">Mexican</option>
+                                <option value="Moroccan">Moroccan</option>
+                                <option value="Pakistani">Pakistani</option>
+                                <option value="Portuguese">Portuguese</option>
+                                <option value="Spanish">Spanish</option>
+                                <option value="Srilankan">Srilankan</option>
+                                <option value="Thai">Thai</option>
+                                <option value="Turkish">Turkish</option>
+                                <option value="Vietnamese">Vietnamese</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </th>
+                        <th class="sort-down">Status</th>
+                        <th class="sort-down">Pick-up Time</th>
+                        <th class="sort-down">Delivery Time</th>
+                        <th class="sort-down">Total</th>
+                        <th class="sort-down">Payment Status</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr dir-paginate="order in allOrdersArray | orderBy:'-orderno'  | filter:searchQuery | filter:search|itemsPerPage:25 ">
+
+                        <td>
+                            <span>#</span><span>{{order.orderno}}</span>
+                        </td>
+                        <td>
+                            <span><b></b></span><br/>
+                            {{ formatDate(order.orderedon) | date:'EEE, MMM dd yyyy h:mm a'}}<br />
+
+                            {{order.completedon || ""}}
+                        </td>
+                        <td>
+                            <!--<span>#</span>{{order.orderno}}<span><br />
+            By</span><br />-->
+                            {{order.foodiename}}<br />
+                            {{order.foodie.mobile}}
+                        </td>
+                        <td>
+                            <div ng-repeat="dish in order.dishes track by $index" >
+                                {{dish.servingquantity}} {{dish.name}}<br />
+                                by {{dish.chefname || ""}}
+                            </div>
+                        </td>
+                        <td>
+                            <div ng-repeat="dishType in order.dishes track by $index" >
+                                {{dishType.type}}
+                            </div>
+                        </td>
+                        <td>
+                            <div ng-repeat="dishCuisine in order.dishes track by $index">
+                                {{dishCuisine.cuisine}}
+                            </div>
+                        </td>
+
+                        <td>
+                            {{order.status}}
+                        </td>
+                        <td>
+                            <div ng-repeat="dish in order.dishes track by $index" >
+                                {{dish.pickuptime}}
+                            </div>
+                        </td>
+                        <td>
+                            <div ng-repeat="dish in order.dishes track by $index" >
+                                {{dish.deliverytime}}
+                            </div>
+                        </td>
+                        <td>
+                            Rs.{{ getDishTotal(order.totalprice, order.deliverycharges) }}<br />
+                            <span>Via COD</span>
+                        </td>
+                        <td>
+                            {{order.action}}
+                        </td>
+                        <td>
+                            <a href="#" ng-click="changeOrderStatus(order)">
+                                View
+                            </a>
+                        </td>
+                    </tr>
+
+                </table>
+                <!--<pagination
+                        ng-model="currentPage"
+                        total-items="allOrdersArray.length"
+                        max-size="maxSize"
+                        boundary-links="true">
+                </pagination>-->
+                <div ng-click="scrollFunction()">
+                    <dir-pagination-controls
+                            max-size="25"
+                            direction-links="true" boundary-links="true"  previous-text="&laquo;" next-text="&raquo;">
+                    </dir-pagination-controls>
+                </div>
+                <!--<dir-pagination-controls pagination="" page="currentPage" on-select-page="setPage(page)" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit"  max-size="5" direction-links="true" boundary-links="true"  previous-text="&laquo;" next-text="&raquo;"></dir-pagination-controls>-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--</div>--> <!-- end inner row -->
+</div> <!-- end div -->
+
+
+
+
+
+
+
