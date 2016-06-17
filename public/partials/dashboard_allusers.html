@@ -6,15 +6,33 @@
     <div class="row">
         <div class="form-inline">
             <input type="text" size="50" class="form-control" ng-model="query" placeholder="Search customers by name, phone, email or status ... " />
-         
-        <span>
+            <input type="text" ng-model="query1" placeholder="search" style="display:none;">
+        <span style="margin-left:24%;
+    font-size: 17px;font-weight: bolder;">
           Total Registered Users:  {{customersArray.length}} 
+        </span>
+        <span style="margin-left: 19px;
+    font-size: 17px;color: #ff7a18;
+    font-weight: bolder;">
+            Total Chefs : {{chef}}
+        </span>
+            <span style="margin-left: 19px;
+    font-size: 17px;color: #8ecd15;
+    font-weight: bolder;">
+            Total Foodies : {{foodie}}
         </span>
 
             <table class=" table-bordered table-hover table-condensed" style="margin-top: 14px;">
                 <thead >
                 <tr >
-                    <th>User Type</th>
+                    <th>S.No</th>
+                    <th>User Type<br/>
+                    <select ng-click="searchByFoodieChef(query1);" ng-model="query1.usertype">
+                        <option value="">All</option>
+                        <option>Chef</option>
+                        <option>foodie</option>
+                    </select>
+                    </th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Mobile</th>
@@ -27,7 +45,10 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="customer in customersArray.slice().reverse() | filter: query">
+                <tr dir-paginate="customer in customersArray.slice().reverse() | filter: query | filter:query1 |itemsPerPage:25">
+                    <td>
+                        {{$index+1}}
+                    </td>
                     <td class="text-center">
                         {{customer.usertype || "Chef"}}
                     </td>
@@ -64,6 +85,12 @@
                 </tr>
                 </tbody>
             </table>
+            <div ng-click="scrollFunction()">
+                <dir-pagination-controls
+                        max-size="25"
+                        direction-links="true" boundary-links="true"  previous-text="&laquo;" next-text="&raquo;">
+                </dir-pagination-controls>
+            </div>
         </div>
     </div>
 </div>

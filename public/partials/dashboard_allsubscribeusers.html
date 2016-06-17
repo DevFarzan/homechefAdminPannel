@@ -24,7 +24,7 @@
 
                 </tr>
 
-                <tr ng-repeat="User in ArraySubscriber.slice().reverse() | filter:query:strict">
+                <tr dir-paginate="User in ArraySubscriber.slice().reverse() | filter:query:strict|itemsPerPage:25 ">
 
                     <td>
                         {{$index + 1}}</td>
@@ -33,6 +33,12 @@
                 </tr>
 
             </table>
+            <div ng-click="scrollFunction()">
+                <dir-pagination-controls
+                        max-size="25"
+                        direction-links="true" boundary-links="true"  previous-text="&laquo;" next-text="&raquo;">
+                </dir-pagination-controls>
+            </div>
         </div>
     </div>
 

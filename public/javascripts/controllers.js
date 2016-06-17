@@ -465,6 +465,8 @@ appControllers.controller('adminControler', ['$scope','$state', '$rootScope', '$
  'ListDishService','auth',
  function($scope, $state, $rootScope, $stateParams , UserService, $http, ListDishService, auth){
 
+     $scope.chef = 50;
+     $scope.foodie = 126
      $scope.filteredTodos = []
          ,$scope.currentPage = 1
          ,$scope.numPerPage = 10
@@ -477,6 +479,16 @@ $scope.type = function(typeP){
     //$scope.textboxHide = false;
 
 }
+
+     $scope.getAllOrders = function(){
+         $http.post('/getOrder',{
+
+         }).success(function(response){
+             console.log(response);
+         }).error(function(error){
+             console.log(error);
+         })
+     }
 
      $scope.ID = '';
      $scope.password = '';
@@ -590,9 +602,8 @@ else {
         $http.get('/getAllSubscribeUsers').success(function (result) {
             console.log(result);
             $scope.allSubscribeUsers = result.data;
-            console.log($scope.allSubscribeUsers[0].InsertedDate[0])
-            $scope.ArraySubscriber = $scope.allSubscribeUsers
-
+            console.log($scope.allSubscribeUsers[0].InsertedDate[0]);
+            $scope.ArraySubscriber = $scope.allSubscribeUsers;
             $scope.lenght = $scope.allSubscribeUsers.length;
             $state.go('dashboard.subscribeusers')
 
@@ -685,6 +696,15 @@ else {
         $('body,html').animate({
             scrollTop: 0
         }, 600);
+    }
+    $scope.searchByFoodieChef = function(searchType) {
+        if(searchType.usertype == 'All') {
+            $scope.query1 = '';
+        }
+        else{
+            $scope.query1 = searchType;
+        }
+
     }
 
     $scope.pageChanged = function() {

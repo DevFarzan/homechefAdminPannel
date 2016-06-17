@@ -115,7 +115,17 @@ router.get('/userprofile/:userid', function(req, res, next) {
     res.json(profile);
   });
 });
-
+router.post('/getOrder',function(req,res){
+    var fodieName = "Sheraz";
+    Order.find({
+        'foodiename':fodieName
+    }, function (err, data) {
+        res.send({
+            err: err,
+            data: data
+        })
+    })
+})
  
 router.param('useriddish', function(req, res, next, id) {
  
