@@ -60,7 +60,7 @@
             </div>
             <input type="text" ng-model="search" style="display:none;">
 
-
+<!--<button ng-click="getAllOrders();">getAllOrder</button>-->
             <div class="col-md-12">
                 <div class="widget-body">
                     <div class="widget-heading purple">
@@ -127,11 +127,11 @@
                             <th class="sort-down">Delivery Time</th>
                             <th class="sort-down">Total</th>
                             <th class="sort-down">Payment Status</th>
-                            <th>Action</th>
+                            <th>Order Type</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr dir-paginate="order in allOrdersArray | orderBy:'-orderno'  | filter:searchQuery | filter:search|itemsPerPage:25 ">
+                        <tr dir-paginate="order in allOrdersArray | orderBy:'-orderno'  | filter:searchQuery | filter:search|itemsPerPage:25 " ng-click="changeOrderStatus(order)" style="cursor: pointer;">
 
                             <td>
                                 <span>#</span><span>{{order.orderno}}</span>
@@ -186,9 +186,7 @@
                                 {{order.action}}
                             </td>
                             <td>
-                                <a href="#" ng-click="changeOrderStatus(order)">
-                                    View
-                                </a>
+                                    {{order.ordertype || "HomeChef Order"}}
                             </td>
                         </tr>
 

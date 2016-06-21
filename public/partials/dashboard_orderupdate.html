@@ -21,6 +21,15 @@
             {{orderDetails.foodie.mobile}}
           </td>
         </tr>
+          <tr>
+              <td>Order Type</td>
+              <td>
+                  <select class="form-control"  ng-model="orderDetails.ordertype">
+                      <option value="HomeChef Order">HomeChef Order</option>
+                      <option value="delivery only">delivery only</option>
+                  </select>
+              </td>
+          </tr>
         <tr>
           <td >Dishes Ordered</td>
           <td >

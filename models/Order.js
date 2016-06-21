@@ -7,7 +7,8 @@ var OrderSchema = new mongoose.Schema({
   foodie: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   status: { type: String , default : "Unpaid"  },
   orderedon: { type: String  },
-  completedon: { type: String  },  
+  completedon: { type: String  },
+  ordertype:{ type: String },
   dishes: [{
     purchfromchef: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     chefname: { type: String  },

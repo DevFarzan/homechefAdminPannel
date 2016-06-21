@@ -787,7 +787,8 @@ appControllers.controller('OrderDetailsController', ['$scope','$state','$statePa
     var obj = {
       orderId : $scope.orderDetails._id,
       status: $scope.orderDetails.status,
-      action: $scope.orderDetails.action  
+      action: $scope.orderDetails.action,
+      ordertype:$scope.orderDetails.ordertype
     }
 
     console.log( obj );

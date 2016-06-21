@@ -118,13 +118,54 @@ router.get('/userprofile/:userid', function(req, res, next) {
 router.post('/getOrder',function(req,res){
     var fodieName = "Sheraz";
     Order.find({
-        'foodiename':fodieName
+        'foodie':'56a65553f1afcacc1a6c4e83'
     }, function (err, data) {
         res.send({
             err: err,
             data: data
         })
     })
+    /*try{
+        Order.find({}).exec( function(err, orders){ //.populate("regisId")
+            if(err){
+                return res.status(400).json({"Unexpected Error:: ": err});
+            }
+            var alldishes = [];
+            async.each( orders,
+                function(record, TopCallback){
+                    var updatedDishes = [];
+                    async.waterfall([
+                        function(callback) {
+                            console.log("record.dishes ");
+                            record.populate("foodie", function(err, foodie) {
+                                // record.foodie = foodie;
+                                callback(null , record.dishes );
+                            });
+
+                        },
+                        function(userData , callback) {
+                            if(userData !=null) {
+                                console.log( userData );
+                                record.dishes = userData;
+                                alldishes.push( record );
+                            }
+                            callback(null, 'done');
+                        }
+                    ], function (err, result) {
+                        TopCallback();
+                    });
+
+                },function(err ){ // All tasks are done now
+                    console.log(alldishes.length);
+
+                    res.json(alldishes);
+                });
+
+        });
+    }catch(Exception ) {
+        console.log(Exception);
+        res.status(400).json({"Unexpected Exception:: ": Exception});
+    }*/
 })
  
 router.param('useriddish', function(req, res, next, id) {
@@ -1054,6 +1095,7 @@ router.post('/updateorderstatus', function(req, res, next) {
         console.log( order );
         order.status = req.body.status;
         order.action = req.body.action;
+        order.ordertype = req.body.ordertype ;
 
         order.save(function(err, doc){
           if(err){

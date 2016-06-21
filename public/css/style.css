@@ -7376,3 +7376,4 @@ input[type=date]::-webkit-outer-spin-button {
     height: 5%;
     color: white;
 }
+select option:empty { display:none }
