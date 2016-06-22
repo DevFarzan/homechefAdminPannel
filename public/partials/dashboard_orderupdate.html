@@ -25,7 +25,7 @@
               <td>Order Type</td>
               <td>
                   <select class="form-control"  ng-model="orderDetails.ordertype">
-                      <option value="HomeChef Order">HomeChef Order</option>
+                      <option value ="">HomeChef Order</option>
                       <option value="delivery only">Delivery Only</option>
                   </select>
               </td>
@@ -89,12 +89,18 @@
             
              <select class="form-control" ng-model="orderDetails.action">   
               <option value="Unpaid">Unpaid</option>
-              <option value="HC Paid">HC Paid</option>
-              <option value="Delivery Partner">Delivery Partner</option>
-              <option value="Accounts">Accounts</option>
+              <option value="HC Paid">Paid</option>
             </select>
           </td> 
         </tr>
+          <tr>
+              <td>Service Fee (15%)</td>
+              <td>
+                  Rs.{{ getDishTotal(orderDetails.totalprice, orderDetails.deliverycharges)*15 / 100}}
+                  <br/>
+
+              </td>
+          </tr>
         <tr>
           <td colspan="2">
            <a ng-href="" class="btn btn-primary " ng-click="updateOrderStatus()" >Update</a>

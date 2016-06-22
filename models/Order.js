@@ -9,6 +9,7 @@ var OrderSchema = new mongoose.Schema({
   orderedon: { type: String  },
   completedon: { type: String  },
   ordertype:{ type: String },
+
   dishes: [{
     purchfromchef: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     chefname: { type: String  },

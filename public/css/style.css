@@ -7141,7 +7141,7 @@ a.purple:hover .caret{
     width: 100%;
 }
 #country-list .country-table-head {
-    background: none repeat scroll 0 0 #FAFAFA;
+    /*background: none repeat scroll 0 0 #FAFAFA;*/
     border: 1px solid #EBEBEB;
     width: 100%;
 	

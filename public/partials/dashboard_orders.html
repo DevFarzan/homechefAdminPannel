@@ -63,7 +63,7 @@
 <!--<button ng-click="getAllOrders();">getAllOrder</button>-->
             <div class="col-md-12">
                 <div class="widget-body">
-                    <div class="widget-heading purple">
+                    <!--<div class="widget-heading purple">
                         <i class="icon-table pull-left"></i><h3 class="pull-left">Order Log</h3>
                         <ul>
                             <li class="dropdown panel-function">
@@ -73,18 +73,18 @@
                                 </ul>
                             </li>
                         </ul>
-                    </div>
+                    </div>-->
 
                     <table id="country-list" class="sortable-table">
                         <thead>
-                        <tr class="country-table-head">
+                        <tr class="country-table-head purple">
                             <!-- <th><input type="checkbox"></th> -->
-                            <th class="sort-down">Order No</th>
-                            <th class="date-sort" data-date-format="d m Y">Order Dates</th>
-                            <th class="sort-down">Ordered By</th>
-                            <th class="sort-down">Dishes Ordered</th>
-                            <th class="sort-down" style="width:8%;">Dish Type
-                            <select ng-click="type(search);" ng-model="search">
+                            <th class="sort-down" style="color:white;">Order No</th>
+                            <th class="date-sort" data-date-format="d m Y" style="color:white;">Order Dates</th>
+                            <th class="sort-down" style="color:white;">Ordered By</th>
+                            <th class="sort-down" style="color:white;">Dishes Ordered</th>
+                            <th class="sort-down" style="width:8%;color:#ffffff">Dish Type
+                            <select ng-click="type(search);" ng-model="search" style="background-color: transparent;">
                                 <option value="">All</option>
                                 <option>Main Dish</option>
                                 <option>Snack</option>
@@ -92,8 +92,8 @@
                                 <option>Others</option>
                             </select>
                             </th>
-                            <th class="sort-down" style="width:8%;">Dish Cuisine
-                                <select ng-click="type(search);" ng-model="search">
+                            <th class="sort-down" style="width:8%;color:white;">Dish Cuisine
+                                <select ng-click="type(search);" ng-model="search" style="background-color: transparent;">
                                     <option value="">All</option>
 
                                     <option value="American">American</option>
@@ -122,12 +122,12 @@
                                     <option value="Other">Other</option>
                                 </select>
                             </th>
-                            <th class="sort-down">Status</th>
-                            <th class="sort-down">Pick-up Time</th>
-                            <th class="sort-down">Delivery Time</th>
-                            <th class="sort-down">Total</th>
-                            <th class="sort-down">Payment Status</th>
-                            <th>Order Type</th>
+                            <th class="sort-down" style="color:white;">Status</th>
+                            <th class="sort-down" style="color:white;">Pick-up Time</th>
+                            <th class="sort-down" style="color:white;">Delivery Time</th>
+                            <th class="sort-down" style="color:white;">Total</th>
+                            <th class="sort-down" style="color:white;">Service Fee Payment Status</th>
+                            <th style="color:white;">Order Type</th>
                         </tr>
                         </thead>
                         <tbody>
