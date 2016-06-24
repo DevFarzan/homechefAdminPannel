@@ -93,12 +93,33 @@
             </select>
           </td> 
         </tr>
+
           <tr>
               <td>Service Fee (15%)</td>
               <td>
                   Rs.{{orderDetails.totalprice *15 / 100}}
                   <br/>
 
+              </td>
+          </tr>
+          <tr>
+              <td>Foodie  Payment Status</td>
+              <td>
+
+                  <select class="form-control" ng-model="orderDetails.Foodie.action">
+                      <option value="">Unpaid</option>
+                      <option value="HC Paid">Paid</option>
+                  </select>
+              </td>
+          </tr>
+          <tr>
+              <td>Chef Fee Payment Status</td>
+              <td>
+
+                  <select class="form-control" ng-model="orderDetails.chef.action">
+                      <option value="">Unpaid</option>
+                      <option value="HC Paid">Paid</option>
+                  </select>
               </td>
           </tr>
         <tr>

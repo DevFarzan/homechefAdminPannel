@@ -790,7 +790,9 @@ appControllers.controller('OrderDetailsController', ['$scope','$state','$statePa
       status: $scope.orderDetails.status,
       action: $scope.orderDetails.action,
       ordertype:$scope.orderDetails.ordertype,
-      servicefee:$scope.orderDetails.servicefee
+      servicefee:$scope.orderDetails.servicefee,
+      foodiePaymentStatus:$scope.orderDetails.Foodie.action,
+      chefPaymentStatus:$scope.orderDetails.chef.action
     }
 
     console.log( obj );

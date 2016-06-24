@@ -175,7 +175,8 @@
                             </td>
                             <td>
                                 <div ng-repeat="dish in order.dishes track by $index" >
-                                    {{dish.deliverytime}}
+                                    {{dish.deliverytime}}<br>
+                                    {{dish.deliverydate | date:"d-MM-yyyy"}}
                                 </div>
                             </td>
                             <td>
