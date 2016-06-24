@@ -783,7 +783,7 @@ appControllers.controller('OrderDetailsController', ['$scope','$state','$statePa
 
   $scope.init();
 
-     
+
   $scope.updateOrderStatus = function(){
     var obj = {
       orderId : $scope.orderDetails._id,

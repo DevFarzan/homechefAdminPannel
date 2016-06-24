@@ -84,7 +84,7 @@
           </td>
         </tr>
         <tr>
-          <td>Payment Status</td>
+          <td>Service Fee Payment Status</td>
           <td>
             
              <select class="form-control" ng-model="orderDetails.action">   
@@ -96,7 +96,7 @@
           <tr>
               <td>Service Fee (15%)</td>
               <td>
-                  Rs.{{ getDishTotal(orderDetails.totalprice, orderDetails.deliverycharges)*15 / 100}}
+                  Rs.{{orderDetails.totalprice *15 / 100}}
                   <br/>
 
               </td>
