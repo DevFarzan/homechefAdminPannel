@@ -466,7 +466,7 @@ appControllers.controller('adminControler', ['$scope','$state', '$rootScope', '$
  function($scope, $state, $rootScope, $stateParams , UserService, $http, ListDishService, auth){
 
      $scope.chef = 50;
-     $scope.foodie = 126
+     $scope.foodie = 135
      $scope.filteredTodos = []
          ,$scope.currentPage = 1
          ,$scope.numPerPage = 10
