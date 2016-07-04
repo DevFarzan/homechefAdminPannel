@@ -1099,6 +1099,10 @@ router.post('/updateorderstatus', function(req, res, next) {
         order.servicefee = req.body.servicefee;
         order.foodiePaymentStatus = req.body.foodiePaymentStatus;
         order.chefPaymentStatus = req.body.chefPaymentStatus;
+        //order.dishes.servingquantity = req.body.dishQuantity;
+        order.deliverycharges = req.body.deliveryCharges;
+        order.totalprice = req.body.totalprice;
+        order.addtionalAmount = req.body.addtionalAmount ;
 
         order.save(function(err, doc){
           if(err){

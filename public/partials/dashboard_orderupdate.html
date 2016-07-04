@@ -10,7 +10,7 @@
           <td>
             <span>Ordered On: </span>{{ formatDate(orderDetails.orderedon) | date:'EEE, MMM dd yyyy h:mm a'}}
             <br/>
-            <span>Completed On: </span>{{orderDetails.completedon || ""}}
+           <!-- <span>Completed On: </span>{{orderDetails.completedon || ""}}-->
           </td>
         </tr>
         <tr>
@@ -32,12 +32,13 @@
           </tr>
         <tr>
           <td >Dishes Ordered</td>
-          <td >
+          <td>
             <div ng-repeat="dish in orderDetails.dishes track by $index" >
-              {{dish.name}} (Qty: {{dish.servingquantity}}) 
+             {{$index+1}})
+              {{dish.name}} (Qty: {{dish.servingquantity}})
               <br>
               by {{dish.chefname || ""}}
-               
+
             </div>
           </td> 
         </tr>
@@ -74,13 +75,19 @@
           <td>Total</td>
           <td>
             <div ng-repeat="dish in orderDetails.dishes track by $index" >
-              {{dish.price}} - (Discount: {{dish.discount}} = {{getDishDiscount(dish)}} )
+              {{dish.price}}
             </div>
-            Total: {{orderDetails.totalprice}} <br/>
-            Delivery Charges: {{orderDetails.deliverycharges}} <br/>
-            Grand Total Rs.{{ getDishTotal(orderDetails.totalprice, orderDetails.deliverycharges)}}
+              <hr size="2" color="gray" style="border-bottom: 1px dashed #ffffff;margin-left:-1%;width:100%;"/>
+            Total: <input type="text" value="{{orderDetails.totalprice}}" ng-model="orderDetails.totalprice">
+              <hr size="2" color="gray" style="border-bottom: 1px dashed #ffffff;margin-left:-1%;width:100%;"/>
+            Delivery Charges: <input type="text" value="{{orderDetails.deliverycharges}}" ng-model="orderDetails.deliverycharges">
+              <hr size="2" color="gray" style="border-bottom: 1px dashed #ffffff;margin-left:-1%;width:100%;"/>
+              <span>Additional Amount:</span>
+              <input type="text" ng-model="orderDetails.addtionalAmount">
+              <hr size="2" color="gray" style="border-bottom: 1px dashed #ffffff;margin-left:-1%;width:100%;"/>
+            Grand Total Rs.{{ getDishTotal(orderDetails.totalprice, orderDetails.deliverycharges,orderDetails.addtionalAmount)}}
+
             <br/>
-            <span>Via COD</span>                    
           </td>
         </tr>
         <tr>
@@ -97,7 +104,7 @@
           <tr>
               <td>Service Fee (15%)</td>
               <td>
-                  Rs.{{orderDetails.totalprice *15 / 100}}
+                  {{orderDetails.totalprice *15 / 100}}
                   <br/>
 
               </td>
@@ -106,8 +113,8 @@
               <td>Foodie  Payment Status</td>
               <td>
 
-                  <select class="form-control" ng-model="orderDetails.Foodie.action">
-                      <option value="">Unpaid</option>
+                  <select class="form-control" ng-model="orderDetails.foodiePaymentStatus">
+                      <option value="Unpaid">Unpaid</option>
                       <option value="HC Paid">Paid</option>
                   </select>
               </td>
@@ -116,8 +123,8 @@
               <td>Chef Fee Payment Status</td>
               <td>
 
-                  <select class="form-control" ng-model="orderDetails.chef.action">
-                      <option value="">Unpaid</option>
+                  <select class="form-control" ng-model="orderDetails.chefPaymentStatus">
+                      <option value="Unpaid">Unpaid</option>
                       <option value="HC Paid">Paid</option>
                   </select>
               </td>

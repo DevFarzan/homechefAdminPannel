@@ -738,9 +738,9 @@ else {
     }
 
 
-    $rootScope.getDishTotal = function (price, delivery) {
+    $rootScope.getDishTotal = function (price, delivery,additional) {
         console.log("getDishTotal: ", price, delivery, ( parseInt(price) + parseInt(delivery) ));
-        return parseInt(price || 0) + parseInt(delivery || 0);
+        return parseInt(price || 0) + parseInt(delivery || 0) + parseInt(additional || 0);
     }
 
     $scope.formatDate = function (date) {
@@ -787,12 +787,17 @@ appControllers.controller('OrderDetailsController', ['$scope','$state','$statePa
   $scope.updateOrderStatus = function(){
     var obj = {
       orderId : $scope.orderDetails._id,
+      foodieMobile:$scope.orderDetails.foodie.mobile,
       status: $scope.orderDetails.status,
       action: $scope.orderDetails.action,
       ordertype:$scope.orderDetails.ordertype,
       servicefee:$scope.orderDetails.servicefee,
-      foodiePaymentStatus:$scope.orderDetails.Foodie.action,
-      chefPaymentStatus:$scope.orderDetails.chef.action
+      foodiePaymentStatus:$scope.orderDetails.foodiePaymentStatus,
+      chefPaymentStatus:$scope.orderDetails.chefPaymentStatus,
+      //dishQuantity:$scope.orderDetails.dishes.servingquantity,
+      deliveryCharges:$scope.orderDetails.deliverycharges,
+      totalprice:$scope.orderDetails.totalprice,
+      addtionalAmount:$scope.orderDetails.addtionalAmount || ""
     }
 
     console.log( obj );
