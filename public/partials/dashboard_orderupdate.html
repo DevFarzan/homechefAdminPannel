@@ -1,6 +1,14 @@
 <div>
   <h2 class="page-heading">
-    <span class="page-heading-title2">Order Details</span>
+    <span class="page-heading-title2">Order Details  <button class="button" ng-click="edit();" style="float: right;
+    padding: 1px;
+    margin-right: 40px;
+    width: 9%;
+    font-family: sans-serif;
+    font-size: 76%;margin-top: 4px;">Edit</button></span>
+
+
+
   </h2> 
   <div class="row">  
     <div class="col-md-12">      
@@ -38,7 +46,7 @@
               {{dish.name}} (Qty: {{dish.servingquantity}})
               <br>
               by {{dish.chefname || ""}}
-
+                <hr size="2" color="gray" style="border-bottom: 1px dashed #ffffff;margin-left:-1%;width:100%;"/>
             </div>
           </td> 
         </tr>
@@ -60,6 +68,7 @@
           <td>
             <div ng-repeat="dish in orderDetails.dishes track by $index" >
               {{dish.pickupdate}} , {{dish.pickuptime}}
+                <hr size="2" color="gray" style="border-bottom: 1px dashed #ffffff;margin-left:-1%;width:100%;"/>
             </div> 
           </td> 
         </tr>
@@ -68,6 +77,7 @@
           <td>
             <div ng-repeat="dish in orderDetails.dishes track by $index" >
               {{dish.deliverydate}} , {{dish.deliverytime}}
+                <hr size="2" color="gray" style="border-bottom: 1px dashed #ffffff;margin-left:-1%;width:100%;"/>
             </div>
           </td>
         </tr>
@@ -80,11 +90,11 @@
               <hr size="2" color="gray" style="border-bottom: 1px dashed #ffffff;margin-left:-1%;width:100%;"/>
             Total: <input type="text" value="{{orderDetails.totalprice}}" ng-model="orderDetails.totalprice">
               <hr size="2" color="gray" style="border-bottom: 1px dashed #ffffff;margin-left:-1%;width:100%;"/>
-            Delivery Charges: <input type="text" value="{{orderDetails.deliverycharges}}" ng-model="orderDetails.deliverycharges">
+            Delivery Charges: <input type="text" value="{{orderDetails.deliverycharges}}" ng-model="orderDetails.deliverycharges" style="border: 1px solid gray;"  ng-show="showtextboxes"><span ng-show="hitetextboxes">{{orderDetails.deliverycharges}}</span>
               <hr size="2" color="gray" style="border-bottom: 1px dashed #ffffff;margin-left:-1%;width:100%;"/>
               <span>Additional Amount:</span>
-              <input type="text" ng-model="orderDetails.addtionalAmount">
-              <hr size="2" color="gray" style="border-bottom: 1px dashed #ffffff;margin-left:-1%;width:100%;"/>
+              <input type="text" ng-model="orderDetails.addtionalAmount" style="border: 1px solid gray;" ng-show="showtextboxes"><span ng-show="hitetextboxes">{{orderDetails.addtionalAmount}}</span>
+              <hr size="2" color="gray" style="border-bottom: 1px dashed #ffffff;margin-left:-1%;width:100%;"  />
             Grand Total Rs.{{ getDishTotal(orderDetails.totalprice, orderDetails.deliverycharges,orderDetails.addtionalAmount)}}
 
             <br/>

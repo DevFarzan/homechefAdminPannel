@@ -505,12 +505,18 @@ $scope.type = function(typeP){
      }
 
 
-
 if(localStorage.getItem('admin') == null){
     alert('login first');
     $state.go('Login')
 }
 else {
+    $scope.showtextboxes = false;
+    $scope.hitetextboxes = true;
+
+    $scope.edit = function(){
+        $scope.showtextboxes = true;
+        $scope.hitetextboxes = false;
+    }
 
     $scope.showAllCustomers = function () {
         UserService.getAllCustomers().then(function (results) {
@@ -799,6 +805,8 @@ appControllers.controller('OrderDetailsController', ['$scope','$state','$statePa
       totalprice:$scope.orderDetails.totalprice,
       addtionalAmount:$scope.orderDetails.addtionalAmount || ""
     }
+      $scope.showtextboxes = false;
+      $scope.hitetextboxes = true;
 
     console.log( obj );
 
