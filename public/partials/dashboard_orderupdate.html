@@ -112,9 +112,9 @@
         </tr>
 
           <tr>
-              <td>Service Fee (15%)</td>
+              <td>Service Fee <input type="text" ng-model="serviceFee" style="border:1px solid gray;width:30px;">%</td>
               <td>
-                  {{orderDetails.totalprice *15 / 100}}
+                  {{orderDetails.totalprice *serviceFee / 100}}
                   <br/>
 
               </td>

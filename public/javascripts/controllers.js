@@ -497,6 +497,22 @@ $scope.type = function(typeP){
          if($scope.ID == 'hcadmin' && $scope.password == 'H0m3Ch3fp@sS'){
              $state.go('dashboard');
              localStorage.setItem('admin',$scope.ID);
+             localStorage.setItem('username',$scope.ID);
+         }
+        else if($scope.ID == 'sherazhassan' && $scope.password == '123456'){
+             $state.go('dashboard');
+             localStorage.setItem('admin',$scope.ID);
+             localStorage.setItem('username',$scope.ID);
+         }
+         else if($scope.ID == 'shahryarkhan' && $scope.password == '12345'){
+             $state.go('dashboard');
+             localStorage.setItem('admin',$scope.ID);
+             localStorage.setItem('username',$scope.ID);
+         }
+         else if($scope.ID == 'Ashraf' && $scope.password == '2243'){
+             $state.go('dashboard');
+             localStorage.setItem('admin',$scope.ID);
+             localStorage.setItem('username',$scope.ID);
          }
          else{
              alert('ID and password is incorrect');
@@ -510,9 +526,11 @@ if(localStorage.getItem('admin') == null){
     $state.go('Login')
 }
 else {
+
+    $scope.username = localStorage.getItem('username')
     $scope.showtextboxes = false;
     $scope.hitetextboxes = true;
-
+    $scope.serviceFee = 15
     $scope.edit = function(){
         $scope.showtextboxes = true;
         $scope.hitetextboxes = false;
