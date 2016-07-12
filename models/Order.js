@@ -14,6 +14,7 @@ var OrderSchema = new mongoose.Schema({
   foodiemobile:{type:String},
   totalprice:{type:String},
   addtionalAmount:{type:String},
+  servicefee:{type:String},
 
   dishes: [{
     purchfromchef: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
