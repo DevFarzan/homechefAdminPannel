@@ -21,6 +21,7 @@ require('./models/FavDish');
 require('./models/MarkedChef'); 
 require('./models/MarkedDish');
 require('./models/UserSubscriptionEmail');
+require('./models/lastupdated');
 
 //authentication config details
 require('./config/passport'); 

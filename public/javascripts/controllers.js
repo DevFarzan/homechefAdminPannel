@@ -781,8 +781,8 @@ else {
 }]); 
 
 appControllers.controller('OrderDetailsController', ['$scope','$state','$stateParams','UserService',
- 'ListDishService','auth','ProfileService',
- function($scope, $state, $stateParams,UserService, ListDishService, auth, ProfileService){
+ 'ListDishService','auth','ProfileService','$http',
+ function($scope, $state, $stateParams,UserService, ListDishService, auth, ProfileService,$http){
 
   $scope.orderDetails = ListDishService.getOrderDetails();
 
@@ -807,7 +807,17 @@ appControllers.controller('OrderDetailsController', ['$scope','$state','$statePa
 
   $scope.init();
 
-
+$scope.getSpecific = function(){
+$http.post('/getspecificuser',{
+  id:'57847f820a42c808062dbfea'
+}).success(function(response){
+  console.log(response)
+  $scope.specificUser = response.data;
+}).error(function(error){
+  console.log(error);
+})
+}
+$scope.getSpecific();
   $scope.updateOrderStatus = function(){
     var obj = {
       orderId : $scope.orderDetails._id,
@@ -825,6 +835,24 @@ appControllers.controller('OrderDetailsController', ['$scope','$state','$statePa
     }
       $scope.showtextboxes = false;
       $scope.hitetextboxes = true;
+     
+     $http.post('/latestUpdated',{
+      username:localStorage.getItem('username')
+     }).success(function(response){
+      console.log(response);
+      $http.post('/specificUserUpdated',{
+        id:"57847f820a42c808062dbfea",
+        username:localStorage.getItem('username')
+      }).success(function(response){
+        console.log(response)
+      }).error(function(error){
+        console.log(error)
+      })
+     }).error(function(error){
+      console.log(error);
+     })
+
+$scope.getSpecific();
 
     console.log( obj );
 

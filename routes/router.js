@@ -17,7 +17,8 @@ var Order = mongoose.model('Order');
 var FavDish = mongoose.model('FavDish');
 var MarkedChef = mongoose.model('MarkedChef');
 var MarkedDish = mongoose.model('MarkedDish');
-var userSubscribeEmail = mongoose.model('userSubscribe')
+var userSubscribeEmail = mongoose.model('userSubscribe');
+var userEdited = mongoose.model('latestupdated');
 
 var config = require('../config/config'); 
 
@@ -1133,6 +1134,63 @@ router.get('/getAllSubscribeUsers',function(req,res){
     })
 })
 
+
+router.post('/latestUpdated',function(req,res){
+
+var DateTemp = new Date();
+var tempDate = DateTemp.getDate() + "-" + (DateTemp.getMonth()+1 < 10 ?  "0"+ (DateTemp.getMonth()+1) : (DateTemp.getMonth()+1) ) + "-" + DateTemp.getFullYear();
+
+  var username = req.body.username;
+
+  var userUpdated_info = new userEdited({
+    username:username,
+    InsertedDate:DateTemp
+  })
+  userUpdated_info.save(function(err,data){
+    res.send({
+      err:err,
+      data:data
+    })
+  })
+})
+
+router.post('/specificUserUpdated',function(req,res){
+  var username = req.body.username;
+  var id = req.body.id;
+  var DateTemp = new Date();
+var tempDate = DateTemp.getDate() + "-" + (DateTemp.getMonth()+1 < 10 ?  "0"+ (DateTemp.getMonth()+1) : (DateTemp.getMonth()+1) ) + "-" + DateTemp.getFullYear();
+
+userEdited.update(
+        {
+            _id: id
+        },
+        {   $set:{
+            username:username,
+            InsertedDate:DateTemp
+        }
+        },function(err,data){
+            res.send({
+               err:err,
+               data:data
+            });
+            console.log(err,data);
+        })
+
+
+})
+
+router.post('/getspecificuser',function(req,res){
+  var id = req.body.id
+userEdited.find({
+        _id: id
+    }, function (err, data) {
+        res.send({
+            err: err,
+            data: data
+        })
+    })
+
+})
 //for all  unknown pages
 router.use(function(req,res){
     res.render('error');

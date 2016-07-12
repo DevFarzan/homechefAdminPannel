@@ -6,10 +6,12 @@
     width: 9%;
     font-family: sans-serif;
     font-size: 76%;margin-top: 4px;">Edit</button></span>
-
-
-
   </h2> 
+
+
+  
+
+
   <div class="row">  
     <div class="col-md-12">      
       <table  class="table table-bordered table-striped table-hover" >
@@ -19,6 +21,15 @@
             <span>Ordered On: </span>{{ formatDate(orderDetails.orderedon) | date:'EEE, MMM dd yyyy h:mm a'}}
             <br/>
            <!-- <span>Completed On: </span>{{orderDetails.completedon || ""}}-->
+          </td>
+        </tr>
+        <tr>
+          <td>Last Updated By</td>
+          <td>
+            <div ng-repeat="users in specificUser">
+    <span>{{users.username}}</span> on 
+      <span ng-repeat="date in users.InsertedDate">{{date | date:'EEE, MMM dd yyyy h:mm a'}}</span>
+  </div>
           </td>
         </tr>
         <tr>
